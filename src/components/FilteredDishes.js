@@ -3,17 +3,22 @@ import React, { useContext, useEffect, useState } from "react";
 import CardDish from "./CardDish";
 import { AllMenuContext } from "./AllMenuContext";
 import Pagination from "./Pagination";
+import Popup from "./Popup";
 
 const FilteredDishes = (props) => {
   const allMenu = useContext(AllMenuContext);
   const [filteredDishes, setFilteredDishes] = useState([]);
   const [activeDish, setActiveDish] = useState("Beef");
-  const [showPopup, setShowPopup] = useState(false);
+
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(4);
   const [menuCategory, setMenuCategory] = useState([]);
   const [singleDish, setSingleDish] = useState([]);
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [currentDish, setCurrentDish] = useState("");
+  // const [addToCartItem, setAddToCartItem] = useState([]);
   let indexOfLastDish = currentPage * itemsPerPage;
 
   let indexOfFirstDish = indexOfLastDish - itemsPerPage;
@@ -41,6 +46,25 @@ const FilteredDishes = (props) => {
     getDefaultDish();
   }, []);
 
+  const showPopupHandler = (dishName) => {
+    setShowPopup(true);
+    setCurrentDish(dishName);
+  };
+  const closePopupHandler = () => {
+    setShowPopup(false);
+  };
+  // const addToCartHandler = (addToCartId, addToCartImg, addToCartTitle) => {
+  //   // console.log("Add to Cart Now...", addToCartImg, addToCartTitle);
+  //   setAddToCartItem([
+  //     ...addToCartItem,
+  //     {
+  //       id: addToCartId,
+  //       img: addToCartImg,
+  //       title: addToCartTitle,
+  //     },
+  //   ]);
+  // };
+
   let singleDishItems = singleDish
     .filter((item, id) => id < maxItem)
     .map((item) => {
@@ -59,7 +83,13 @@ const FilteredDishes = (props) => {
         return menu.strCategory === category;
       })
       .map((menu) => {
-        return <CardDish menuItem={menu} key={menu.idMeal} />;
+        return (
+          <CardDish
+            menuItem={menu}
+            key={menu.idMeal}
+            showPopup={showPopupHandler}
+          />
+        );
       });
     console.log(filteredDishesAre);
     setFilteredDishes(filteredDishesAre);
@@ -71,6 +101,13 @@ const FilteredDishes = (props) => {
   // console.log("All Menu", props.allMenus);
   return (
     <section className="filtered-dishes-section">
+      {showPopup && (
+        <Popup
+          closePopup={closePopupHandler}
+          currentDish={currentDish}
+          // addToCartHandler={addToCartHandler}
+        />
+      )}
       <div>
         <div className="container">
           <div className="text-center">

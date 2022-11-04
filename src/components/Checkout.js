@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
-import { StateContext } from "../context/AppProvider";
+import React from "react";
+import { useSelector } from "react-redux";
+// import { StateContext } from "../context/AppProvider";
 
 const Checkout = () => {
-  const cartPackage = useContext(StateContext);
-  console.log("Checkout==", cartPackage);
-  let cartItemsAre = cartPackage.cartItems.map((item) => {
+  // const cartPackage = useContext(StateContext);
+  // console.log("Checkout==", cartPackage);
+  const { cartList } = useSelector((state) => state.cart);
+  let cartItemsAre = cartList.map((item) => {
     return (
       <div key={item.idMeal}>
-        <img src={item.img} alt={item.title} />
-        <h6>{item.title}</h6>
+        <img src={item.strMealThumb} alt={item.strMeal} />
+        <h6>{item.strMeal}</h6>
         {/* {addToCartResults} */}
       </div>
     );

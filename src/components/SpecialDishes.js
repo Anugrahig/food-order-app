@@ -2,13 +2,14 @@ import { useContext, useState } from "react";
 import CardDish from "./CardDish";
 import { AllMenuContext } from "./AllMenuContext";
 import Popup from "./Popup";
-import AddToCart from "./AddToCart";
+// import { StateContext } from "../context/AppProvider";
 
 const SpecialDishes = () => {
   const allMenus = useContext(AllMenuContext);
   const [showPopup, setShowPopup] = useState(false);
   const [currentDish, setCurrentDish] = useState("");
-  const [addToCartItem, setAddToCartItem] = useState([]);
+  // const [addToCartItem, setAddToCartItem] = useState([]);
+  // const cartPackage = useContext(StateContext);
   // console.log("All menus", allMenus);
   // console.log(props.specialMenu);
   let maxSpecialDishes = 8;
@@ -23,6 +24,7 @@ const SpecialDishes = () => {
   //   }
   // });
   // Let's shows the Popup menu
+  // console.log("cartPackage from special dishes", cartPackage);
   const showPopupHandler = (dishName) => {
     setShowPopup(true);
     setCurrentDish(dishName);
@@ -30,17 +32,17 @@ const SpecialDishes = () => {
   const closePopupHandler = () => {
     setShowPopup(false);
   };
-  const addToCartHandler = (addToCartId, addToCartImg, addToCartTitle) => {
-    // console.log("Add to Cart Now...", addToCartImg, addToCartTitle);
-    setAddToCartItem([
-      ...addToCartItem,
-      {
-        id: addToCartId,
-        img: addToCartImg,
-        title: addToCartTitle,
-      },
-    ]);
-  };
+  // const addToCartHandler = (addToCartId, addToCartImg, addToCartTitle) => {
+  //   // console.log("Add to Cart Now...", addToCartImg, addToCartTitle);
+  //   setAddToCartItem([
+  //     ...addToCartItem,
+  //     {
+  //       id: addToCartId,
+  //       img: addToCartImg,
+  //       title: addToCartTitle,
+  //     },
+  //   ]);
+  // };
   // console.log("Type of", typeof addToCartItem);
   // console.log("Add to cart", addToCartItem);
 
@@ -50,11 +52,11 @@ const SpecialDishes = () => {
         <Popup
           closePopup={closePopupHandler}
           currentDish={currentDish}
-          addToCartHandler={addToCartHandler}
+          // addToCartHandler={addToCartHandler}
         />
       )}
       <div className="container">
-        <AddToCart addToCartItem={addToCartItem} />
+        {/* <AddToCart addToCartItem={addToCartItem} /> */}
         <div className="special-dishes-content text-center ">
           <h3 className="heading-tertiary">Our Special Dishes</h3>
           <p className="special-dish-para">

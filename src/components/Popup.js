@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
-import { DispatchContext, StateContext } from "../context/AppProvider";
+import { useDispatch, useSelector } from "react-redux";
 import { AllMenuContext } from "./AllMenuContext";
-
-const Popup = ({ closePopup, currentDish, addToCartHandler }) => {
+import { addToCart } from "../redux/cart";
+const Popup = ({ closePopup, currentDish }) => {
   const allMenu = useContext(AllMenuContext);
-  const dispatch = useContext(DispatchContext);
-  const cartPackage = useContext(StateContext);
-  console.log("cartPackage ==", cartPackage.cartItems);
 
-  console.log("DispatchContext", dispatch);
+
+  
+  const { cartList } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  console.log("CartList", cartList);
   let dishDetails = allMenu
     .filter((menuItem) => currentDish === menuItem.strMeal)
     .map((item) => {
@@ -33,20 +35,7 @@ const Popup = ({ closePopup, currentDish, addToCartHandler }) => {
             <li>{item.strIngredient4}</li>
           </ul>
           {/* onClick={() => addToCartHandler(item.strMealThumb, item.strMeal)} */}
-          <button
-            onClick={() =>
-              dispatch({
-                type: "add_to_cart",
-                payload: {
-                  id: item.idMeal,
-                  title: item.strMeal,
-                  img: item.strMealThumb,
-                },
-              })
-            }
-          >
-            Order Now
-          </button>
+          <button onClick={() => dispatch(addToCart(item))}>Order Now</button>
           <h5 className="popup-close" onClick={closePopup}>
             Close
           </h5>
