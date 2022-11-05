@@ -1,8 +1,10 @@
 import React from "react";
+
 import { useState } from "react";
 
 const Pagination = (props) => {
   // console.log("Pagination", props.filteredDishes);
+
   const [activePage, setActivePage] = useState(1);
   let numberOfPages = [];
   for (

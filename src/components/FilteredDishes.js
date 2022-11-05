@@ -24,7 +24,7 @@ const FilteredDishes = (props) => {
   let indexOfFirstDish = indexOfLastDish - itemsPerPage;
 
   let showDishesNow = filteredDishes.slice(indexOfFirstDish, indexOfLastDish);
-  let maxItem = 4;
+  // let maxItem = 4;
 
   // Get all the categories
   const getAllCategories = async () => {
@@ -53,26 +53,16 @@ const FilteredDishes = (props) => {
   const closePopupHandler = () => {
     setShowPopup(false);
   };
-  // const addToCartHandler = (addToCartId, addToCartImg, addToCartTitle) => {
-  //   // console.log("Add to Cart Now...", addToCartImg, addToCartTitle);
-  //   setAddToCartItem([
-  //     ...addToCartItem,
-  //     {
-  //       id: addToCartId,
-  //       img: addToCartImg,
-  //       title: addToCartTitle,
-  //     },
-  //   ]);
-  // };
 
   let singleDishItems = singleDish
-    .filter((item, id) => id < maxItem)
-    .map((item) => {
+    .filter((menu, id) => menu.strMeal.startsWith("C"))
+    .map((menu) => {
       return (
-        <div className="filtered-dishes-item-list-item" key={item.idMeal}>
-          <img className="br-10" src={item.strMealThumb} alt={item.strMeal} />
-          <h5 className="heading-senary">{item.strMeal}</h5>
-        </div>
+        <CardDish
+          menuItem={menu}
+          key={menu.idMeal}
+          showPopup={showPopupHandler}
+        />
       );
     });
   const showFilteredDishesHandler = (category) => {
@@ -96,9 +86,7 @@ const FilteredDishes = (props) => {
     console.log("Category: ", category);
     setActiveDish(category);
   };
-  //  Let's shows categories
-  // console.log("Type", typeof filteredDishes);
-  // console.log("All Menu", props.allMenus);
+
   return (
     <section className="filtered-dishes-section">
       {showPopup && (

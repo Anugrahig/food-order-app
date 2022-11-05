@@ -12,13 +12,13 @@ const Menus = () => {
     <div>
       <Router>
         <Header />
-        <Hero />
         <Routes>
           {/* Page 1 */}
           <Route
             path="/"
             element={
               <AllMenus>
+                <Hero />
                 <SpecialDishes />
                 <FilteredDishes />
               </AllMenus>

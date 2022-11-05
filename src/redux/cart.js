@@ -22,13 +22,32 @@ const cartSlice = createSlice({
       }
       // state.cartCount = 1;
     },
-    increment: (state) => {
-      state.cartCount += 1;
+    increment: (state, action) => {
+      state.cartList.forEach((item) => {
+        if (item.idMeal === action.payload.idMeal) {
+          item.count++;
+        }
+      });
     },
-    decrement: (state) => {
-      state.cartCount -= 1;
+    decrement: (state, action) => {
+      const itemExist = state.cartList.find((item) => item.count === 1);
+      if (itemExist) {
+        state.cartList.filter((item) => item.idMeal !== action.payload.idMeal);
+      } else {
+        state.cartList.forEach((item) => {
+          if (item.idMeal === action.payload.idMeal) {
+            item.count--;
+          }
+        });
+      }
+    },
+    removeItem: (state, action) => {
+      state.cartList = state.cartList.filter(
+        (item) => item.idMeal !== action.payload.idMeal
+      );
     },
   },
 });
-export const { addToCart, increment, decrement } = cartSlice.actions;
+export const { addToCart, increment, decrement, removeItem } =
+  cartSlice.actions;
 export default cartSlice.reducer;

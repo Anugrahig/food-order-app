@@ -1,26 +1,34 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import CheckoutItem from "./CheckoutItem";
 // import { StateContext } from "../context/AppProvider";
 
 const Checkout = () => {
-  // const cartPackage = useContext(StateContext);
-  // console.log("Checkout==", cartPackage);
   const { cartList } = useSelector((state) => state.cart);
-  let cartItemsAre = cartList.map((item) => {
-    return (
-      <div key={item.idMeal}>
-        <img src={item.strMealThumb} alt={item.strMeal} />
-        <h6>{item.strMeal}</h6>
-        {/* {addToCartResults} */}
-      </div>
-    );
-  });
+
   return (
-    <div className="ckeckout">
-      <h2>This is a checkout page </h2>
-      {cartItemsAre}
-      {/* <img src={cartPackage.cartItems[1]} alt={cartPackage.cartItems[0]} />
-      <h6>{cartPackage.cartItems[0]}</h6> */}
+    <div className="checkout-container">
+      <div className="checkout-header">
+        <div className="header-block">
+          <span>Product</span>
+        </div>
+        <div className="header-block">
+          <span>Description</span>
+        </div>
+        <div className="header-block">
+          <span>Quantity</span>
+        </div>
+        <div className="header-block">
+          <span>Price</span>
+        </div>
+        <div className="header-block">
+          <span>Remove</span>
+        </div>
+      </div>
+
+      {cartList.map((item) => (
+        <CheckoutItem key={item.idMeal} cartItem={item} />
+      ))}
     </div>
   );
 };
