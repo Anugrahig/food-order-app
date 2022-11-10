@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { increment, decrement, removeItem } from "../redux/cart";
 const CheckoutItem = ({ cartItem }) => {
   const { strMealThumb, strMeal, count, idMeal } = cartItem;
-  console.log("IdMeal", idMeal);
+
   const dispatch = useDispatch();
   return (
     <div className="checkout-item-container">

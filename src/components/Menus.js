@@ -7,6 +7,8 @@ import { AllMenus } from "./AllMenuContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Checkout from "./Checkout";
 
+import Footer from "./Footer";
+
 const Menus = () => {
   return (
     <div>
@@ -27,6 +29,7 @@ const Menus = () => {
 
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

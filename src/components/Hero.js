@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import HeroImage from "../assets/images/hero-min.png";
 const Hero = () => {
   return (
@@ -13,15 +14,9 @@ const Hero = () => {
             deleniti, consequatur esse molestias a debitis minima recusandae
             eveniet possimus.
           </p>
-          <a href="#cta" className="btn btn--full margin-right-sm margin-btm ">
-            Start eating well
-          </a>
-
-          {/* <div className="delivered-meals">
-            <p className="delivered-text">
-              <span> 250,000+</span> meals delivered last year!
-            </p>
-          </div> */}
+          <Link to="#" className="btn btn--full margin-right-sm margin-btm ">
+            Start your order
+          </Link>
         </div>
         <div className="hero-img-box">
           <picture>
@@ -37,4 +32,3 @@ const Hero = () => {
   );
 };
 export default Hero;
-

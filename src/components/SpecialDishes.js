@@ -8,23 +8,9 @@ const SpecialDishes = () => {
   const allMenus = useContext(AllMenuContext);
   const [showPopup, setShowPopup] = useState(false);
   const [currentDish, setCurrentDish] = useState("");
-  // const [addToCartItem, setAddToCartItem] = useState([]);
-  // const cartPackage = useContext(StateContext);
-  // console.log("All menus", allMenus);
-  // console.log(props.specialMenu);
+
   let maxSpecialDishes = 8;
-  // let specialMenus = props.specialMenu.map((menu, index) => {
-  //   if (index < maxSpecialDishes) {
-  //     return (
-  //       <li>
-  //         <img className="br-10" src={menu.strMealThumb} alt={menu.strMeal} />
-  //         <h4>{menu.strMeal}</h4>
-  //       </li>
-  //     );
-  //   }
-  // });
-  // Let's shows the Popup menu
-  // console.log("cartPackage from special dishes", cartPackage);
+
   const showPopupHandler = (dishName) => {
     setShowPopup(true);
     setCurrentDish(dishName);
@@ -32,19 +18,6 @@ const SpecialDishes = () => {
   const closePopupHandler = () => {
     setShowPopup(false);
   };
-  // const addToCartHandler = (addToCartId, addToCartImg, addToCartTitle) => {
-  //   // console.log("Add to Cart Now...", addToCartImg, addToCartTitle);
-  //   setAddToCartItem([
-  //     ...addToCartItem,
-  //     {
-  //       id: addToCartId,
-  //       img: addToCartImg,
-  //       title: addToCartTitle,
-  //     },
-  //   ]);
-  // };
-  // console.log("Type of", typeof addToCartItem);
-  // console.log("Add to cart", addToCartItem);
 
   return (
     <section className="section-special-dishes">
@@ -52,11 +25,10 @@ const SpecialDishes = () => {
         <Popup
           closePopup={closePopupHandler}
           currentDish={currentDish}
-          // addToCartHandler={addToCartHandler}
+          onClose={() => setShowPopup(false)}
         />
       )}
       <div className="container">
-        {/* <AddToCart addToCartItem={addToCartItem} /> */}
         <div className="special-dishes-content text-center ">
           <h3 className="heading-tertiary">Our Special Dishes</h3>
           <p className="special-dish-para">
@@ -65,7 +37,7 @@ const SpecialDishes = () => {
             beatae dolores alias neque nobis voluptas pariatur?
           </p>
         </div>
-        <div className="  special-dishes-list container grid grid--4-cols margin-bottom-md ">
+        <div className="special-dishes-list container grid grid--4-cols margin-bottom-md">
           {allMenus
             .filter((menu, id) => id < maxSpecialDishes)
             .map((menu) => {

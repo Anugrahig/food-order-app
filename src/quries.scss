@@ -1,0 +1,220 @@
+/* rem and em do NOT depend on html font-size in media queries! 
+Instead, 1rem = 1em = 16px */
+
+/**********************************/
+/* Below 1344px(Smaller desktops) */
+/**********************************/
+@media (max-width: 84em) {
+  .hero {
+    max-width: 120rem;
+  }
+  .heading-primary {
+    font-size: 4.4rem;
+  }
+  .footer-text {
+    font-size: 1.6rem;
+    line-height: 1.4;
+  }
+}
+
+/**********************************/
+/* Below 1200px( Landscape Tablets) */
+/**********************************/
+@media (max-width: 75em) {
+  html {
+    /* 9/16 = 56.25 */
+    font-size: 56.25%;
+  }
+  .filtered-dishes-category {
+    padding: 0 0 0 3rem;
+    // column-gap: 3.5rem;
+    // row-gap: 1.8rem;
+  }
+
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+  .heading-tertiary {
+    font-size: 2.4rem;
+    margin-top: 1rem;
+  }
+  .header,
+  .header.fixed {
+    padding: 0 3.2rem;
+  }
+
+  .hero {
+    gap: 4.8rem;
+  }
+  .filtered-dishes-category-list div {
+    font-weight: 500;
+    padding: 1rem 3.5rem;
+  }
+  .popup-close {
+    top: 4rem;
+    right: 4rem;
+    text-shadow: 0.5px 0.5px #555;
+    // filter: blur(0.5px);
+    backdrop-filter: blur(2rem);
+  }
+}
+/**********************************/
+/* Below 944px(Tablets) */
+/**********************************/
+
+@media (max-width: 59em) {
+  html {
+    /* 8px / 16px = 0.5 = 50% */
+    font-size: 50%;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0 8rem;
+    gap: 8rem;
+  }
+  .hero-img {
+    width: 80%;
+  }
+  .hero-img-box,
+  .hero-text-box {
+    text-align: center;
+  }
+  .special-dish-para {
+    margin-bottom: 2rem;
+  }
+  .filtered-dishes-category {
+    column-gap: 1.5rem;
+    row-gap: 1rem;
+  }
+  .filtered-dishes-category-list div {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    padding: 1rem 2rem;
+  }
+  .filtered-dishes-category-list {
+    margin-top: 2rem;
+  }
+  .grid--4-cols {
+    column-gap: 4rem;
+    row-gap: 5rem;
+  }
+  .heading-senary {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .section-special-dishes,
+  .filtered-dishes-section {
+    padding: 2rem 0 1rem 0;
+  }
+  .margin-btm {
+    margin-bottom: 0;
+  }
+}
+
+/**********************************/
+/* Below 704px (Smaller Tablets) */
+/**********************************/
+@media (max-width: 44em) {
+  .grid--4-cols {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 10rem;
+    row-gap: 6.4rem;
+  }
+  .heading-primary {
+    font-size: 4rem;
+  }
+  .heading-secondary {
+    margin-bottom: 4.8rem;
+  }
+  .header,
+  .header.fixed {
+    padding: 0 7rem;
+    margin: 0 auto;
+  }
+  .filtered-dishes-category-list div {
+    padding: 0.9rem 1.6rem;
+  }
+  .filtered-dishes-category-list {
+    margin-top: 1.6rem;
+  }
+  .heading-senary {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  .logo-container {
+    padding: 0 7rem;
+  }
+  .popup-close {
+    // right: 2rem;
+    top: 1rem;
+  }
+}
+/**********************************/
+/* Below 544px (Phones) */
+/**********************************/
+@media (max-width: 34em) {
+  .footer .logo-container {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .heading-primary {
+    font-weight: 600;
+    font-size: 3.6rem;
+  }
+  .grid--4-cols {
+    column-gap: 4rem;
+    row-gap: 4rem;
+  }
+  .filtered-dishes-category-list {
+    margin-top: 0.8rem;
+  }
+  .filtered-dishes-category-list div {
+    font-size: 1.3rem;
+    font-weight: 450;
+  }
+  .filtered-dishes-category {
+    column-gap: 1rem;
+  }
+  .popup-close {
+    top: 3.5rem;
+    right: 2rem;
+  }
+  .dish-ingredients li {
+    font-size: 1.3rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+/**********************************/
+/* Below 400px ( Small Phones) */
+/**********************************/
+@media (max-width: 25em) {
+  .heading-primary {
+    font-size: 3.2rem;
+  }
+  .container {
+    padding: 0 2.6rem;
+  }
+  .grid--4-cols {
+    column-gap: 3rem;
+  }
+  .heading-senary {
+    font-size: 1.7rem;
+  }
+  .filtered-dishes-category-list div {
+    font-weight: 400;
+  }
+  .hero-img {
+    width: 100%;
+  }
+  .header,
+  .header.fixed {
+    padding: 0 4rem;
+  }
+}

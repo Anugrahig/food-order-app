@@ -56,13 +56,15 @@ const FilteredDishes = (props) => {
 
   let singleDishItems = singleDish
     .filter((menu, id) => menu.strMeal.startsWith("C"))
-    .map((menu) => {
+    .map((menu, id) => {
       return (
-        <CardDish
-          menuItem={menu}
-          key={menu.idMeal}
-          showPopup={showPopupHandler}
-        />
+        id < 4 && (
+          <CardDish
+            menuItem={menu}
+            key={menu.idMeal}
+            showPopup={showPopupHandler}
+          />
+        )
       );
     });
   const showFilteredDishesHandler = (category) => {
@@ -81,9 +83,9 @@ const FilteredDishes = (props) => {
           />
         );
       });
-    console.log(filteredDishesAre);
+
     setFilteredDishes(filteredDishesAre);
-    console.log("Category: ", category);
+
     setActiveDish(category);
   };
 
@@ -93,7 +95,7 @@ const FilteredDishes = (props) => {
         <Popup
           closePopup={closePopupHandler}
           currentDish={currentDish}
-          // addToCartHandler={addToCartHandler}
+          onClose={() => setShowPopup(false)}
         />
       )}
       <div>
@@ -122,19 +124,23 @@ const FilteredDishes = (props) => {
               );
             })}
           </div>
-          <div className="filtered-dishes-item grid grid--4-cols margin-bottom-md">
-            <div className="filtered-dishes-item-list container">
-              {singleDishItems}
+          <div className="special-dishes-list container grid grid--4-cols margin-bottom-md">
+            {/* <div className="filtered-dishes-item-list container"> */}
+            {singleDishItems}
 
-              {singleDishItems != 0 || filteredDishes.length !== 0 ? (
-                showDishesNow
-              ) : (
-                <div className="alert">
-                  <h3 className="heading-quaternary">Sorry, no items found</h3>
-                  <h4 className="heading-quinary">Please try another Dishes</h4>
-                </div>
-              )}
-            </div>
+            {singleDishItems != 0 || filteredDishes.length !== 0 ? (
+              showDishesNow
+            ) : (
+              <div className="alert">
+                <h3 className="heading-quaternary margin-left">
+                  Sorry, no items found
+                </h3>
+                <h4 className="heading-quinary margin-left">
+                  Please try another Dishes
+                </h4>
+              </div>
+            )}
+            {/* </div> */}
           </div>
 
           <Pagination
