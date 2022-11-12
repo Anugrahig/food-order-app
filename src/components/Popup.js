@@ -13,11 +13,7 @@ const Popup = ({ closePopup, currentDish, onClose }) => {
       return (
         <div key={item.idMeal}>
           <div className="popup-header">
-            <img
-              src={item.strMealThumb}
-              alt={item.strMeal}
-              onClick={console.log("Clicked...")}
-            />
+            <img src={item.strMealThumb} alt={item.strMeal} />
             <h5 className="popup-header-category heading-senary">
               {item.strCategory}
             </h5>

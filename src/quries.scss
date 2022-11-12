@@ -190,6 +190,26 @@ Instead, 1rem = 1em = 16px */
     align-items: center;
     justify-content: center;
   }
+  .checkout-container {
+    // margin: 2rem 0;
+    width: 100%;
+    max-width: 120rem;
+    padding: 0 3.2rem;
+    margin: 0 auto;
+  }
+  .checkout-container .checkout-header .header-block {
+    text-transform: capitalize;
+    width: 20%;
+    flex-wrap: wrap;
+  }
+  .checkout-container .checkout-header {
+    justify-content: center;
+    margin-top: 4rem;
+  }
+  .checkout-item-container {
+    font-size: 1.6rem;
+    line-height: 1.05;
+  }
 }
 /**********************************/
 /* Below 400px ( Small Phones) */

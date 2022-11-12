@@ -30,9 +30,13 @@ const cartSlice = createSlice({
       });
     },
     decrement: (state, action) => {
-      const itemExist = state.cartList.find((item) => item.count === 1);
-      if (itemExist) {
-        state.cartList.filter((item) => item.idMeal !== action.payload.idMeal);
+      const exist = state.cartList.find(
+        (item) => item.idMeal === action.payload.idMeal
+      );
+      if (exist.count === 1) {
+        state.cartList = state.cartList.filter(
+          (item) => item.idMeal !== action.payload.idMeal
+        );
       } else {
         state.cartList.forEach((item) => {
           if (item.idMeal === action.payload.idMeal) {
